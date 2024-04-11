@@ -1,33 +1,28 @@
 <?php
 
-$albumImages = array(
-    'Paranoid' => 'Black Sabbath',
-    'Destroyer' => 'Kiss',
-    'Tim' => 'Tim Maia',
-);
+function getAlbumPATH($albumName) {
+    $albumImages = array(
+        'Paranoid' => 'Black Sabbath',
+        'Destroyer' => 'Kiss',
+        'Tim' => 'Tim Maia',
+        'Stay Hungry' => 'Twisted Sister',
+    );
+
+    foreach ($albumImages as $album => $banda):
+        if ($albumName == $album) {
+            return $banda;
+        }
+    endforeach;
+}
 
 function getAlbums() {
     $albums = glob('albums/*');
     return $albums;
 }
 
-function getMusics($albums) {
-
-    foreach ($albums as $banda):
-        if ($_GET['album'] == $albumImages);
-            
-        $musics = glob("{$banda}/musics/*.mp3");
-    endforeach;
-
-    //var_dump($musics);
+function getMusics($banda) {
+    $musics = [];
+        $musics = array_merge($musics, glob("albums/{$banda}/musics/*.mp3"));
     return $musics;
 }
-
-function getAlbumName($albums) {
-    $albumsPATH = glob('albums/*');
-    foreach ($albumsPATH as $bandaPATH):
-        $albumName = explode('/', $albumsPATH);
-        var_dump($albumName);
-    endforeach;
-    return $albumName;
-}
+?>

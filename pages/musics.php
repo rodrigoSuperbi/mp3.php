@@ -1,20 +1,28 @@
-<h1>Músicas do Álbum <?=$_GET['album']?></h1>
+<a href="?page=albums">Voltar para os álbums</a>
+
+<h1>Músicas do álbum <?=$_GET['album']?></h1>
+
+<a href="?page=new_music&album=<?=$_GET['album']?>" class="btn btn-success">Cadastrar nova música</a>
 
 <hr>
+
 <div class="row">
     <?php
 
     $albums = getAlbums();
-
-    $musics = getMusics($albums);
-    $teste = getAlbumName($albums);
-        foreach ($teste as $nome):
-            var_dump($nome);
+    $bandaName = getAlbumPATH($_GET['album']);
+    $musics = getMusics($bandaName);
 
 
-        endforeach;
     ?>
 </div>
-<div class="col-12">
-    <audio src="albums/BlackSabbath/musics/01 - War Pigs.mp3" controls></audio>
-</div>
+<?php
+    foreach ($musics as $music):
+?>
+    <div class="col-12">
+        <audio src="<?=$music?>" controls></audio>
+    </div>
+
+    <?php  
+        endforeach
+    ?>

@@ -1,6 +1,6 @@
 <h1>Álbum</h1>
 
-<a href="?page=new_album" class="btn btn-success">Adicionar Novo Álbum</a>
+<a href="?page=new_album" class="btn btn-success">Adicionar novo álbum</a>
 
 <hr>
 
@@ -10,10 +10,11 @@
             'Black Sabbath' => 'Paranoid',
             'Kiss' => 'Destroyer',
             'Tim Maia' => 'Tim',
+            'Twisted Sister' => 'Stay Hungry'
         );
 
         $albums = getAlbums();
-        // for ($i = 1; $i <= 10; $i++):
+        
         foreach ($albums as $album):
             $infoAlbum = explode('/', $album);
             $nameAlbum = $infoAlbum[1];
